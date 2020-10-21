@@ -60,13 +60,15 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
             this.ResumeLayout(false);
-
+            this.KeyDown += this.onKeyDown;
+            this.KeyUp += this.onKeyUp;
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox canvas;
         public System.Windows.Forms.Timer gameTimer;
+        
     }
 }
 
