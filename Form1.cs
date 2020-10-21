@@ -12,17 +12,20 @@ using System.Reflection;
 namespace First_try_of_game
 {
 
-  
+    
    
     public partial class Form1 : Form
     {
         //создание переменных
         Bitmap scene;
+        const int ogranichitel = 10;
         Graphics game;
         Player start;
         Brush blackbrush;
+        int gametimer = 0;
         Pen blackpen;
         PointF now;
+        PointF old;
         public Form1()
         {
             InitializeComponent();
@@ -57,23 +60,35 @@ namespace First_try_of_game
             //game.FillEllipse(blackbrush, player.B.X , player.B.Y , player.size, player.size);
             //game.FillEllipse(blackbrush, player.C.X , player.C.Y , player.size, player.size);
             // game.DrawLine(,player.pos.X, player.pos.Y, player.pos.X, player.pos.Y);
+            old = now;
             switch ( rand.Next(0, 3))
             {
                 case 0:
+                    if ((Math.Abs(start.A.X - now.X)> ogranichitel) && (Math.Abs(start.A.Y - now.Y)> ogranichitel)) { 
                     now.X += (0.5f * (start.A.X-now.X));
                     now.Y += (0.5f * (start.A.Y-now.Y));
+                        game.FillEllipse(blackbrush, now.X, now.Y, 5, 5);
+                    }
                     break;
                 case 1:
-                    now.X += (0.5f * (start.B.X - now.X));
-                    now.Y += (0.5f * (start.B.Y - now.Y));
+                    if ((Math.Abs(start.B.X - now.X) > ogranichitel) && (Math.Abs(start.B.Y - now.Y) > ogranichitel))
+                    {
+                        now.X += (0.5f * (start.B.X - now.X));
+                        now.Y += (0.5f * (start.B.Y - now.Y));
+                        game.FillEllipse(blackbrush, now.X, now.Y, 5, 5);
+                    }
                     break;
                 case 2:
-                    now.X += (0.5f * (start.C.X - now.X));
-                    now.Y += (0.5f * (start.C.Y - now.Y));
+                    if ((Math.Abs(start.C.X - now.X) > ogranichitel) && (Math.Abs(start.C.Y - now.Y) > ogranichitel))
+                    {
+                        now.X += (0.5f * (start.C.X - now.X));
+                        now.Y += (0.5f * (start.C.Y - now.Y));
+                        game.FillEllipse(blackbrush, now.X, now.Y, 5, 5);
+                    }
                     break; }
-            game.FillEllipse(blackbrush, now.X, now.Y, 5,5);
+           
             canvas.Image = scene;
-            
+            gametimer++;
             
         }
 

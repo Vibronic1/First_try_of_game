@@ -58,7 +58,7 @@
             // 
             // gameTimer
             // 
-            this.gameTimer.Interval = 16;
+            this.gameTimer.Interval = 10;
             this.gameTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label_Cx
