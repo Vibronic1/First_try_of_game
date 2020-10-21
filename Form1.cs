@@ -50,7 +50,7 @@ namespace First_try_of_game
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -60,9 +60,17 @@ namespace First_try_of_game
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            game.FillEllipse(
+                blackbrush,
+                player.pos.X - player.size / 2f,
+                player.pos.Y - player.size / 2f,
+                player.size,
+                player.size
+            );
             game.Clear(Color.White);
             canvas.Image = scene;
             gametimer++;
+            
         }
     }
 }
